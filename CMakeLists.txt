@@ -270,11 +270,18 @@ target_link_libraries(leveldbutil leveldb)
 add_executable(leveldbmytest
         "${PROJECT_SOURCE_DIR}/test/test.cc"
         )
-target_link_libraries(leveldb)
+target_link_libraries(leveldbmytest leveldb)
 target_include_directories(leveldbmytest
         PUBLIC
         $<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/include>
-        $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>
+        )
+add_executable(leveldbmytest2
+        test/test2.cpp
+        )
+target_link_libraries(leveldbmytest2 leveldb)
+target_include_directories(leveldbmytest2
+        PUBLIC
+        $<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/include>
         )
 
 if(LEVELDB_BUILD_TESTS)
