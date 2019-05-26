@@ -267,6 +267,16 @@ add_executable(leveldbutil
 )
 target_link_libraries(leveldbutil leveldb)
 
+add_executable(leveldbmytest
+        "${PROJECT_SOURCE_DIR}/test/test.cc"
+        )
+target_link_libraries(leveldb)
+target_include_directories(leveldbmytest
+        PUBLIC
+        $<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/include>
+        $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>
+        )
+
 if(LEVELDB_BUILD_TESTS)
   enable_testing()
 
